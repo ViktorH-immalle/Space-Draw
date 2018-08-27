@@ -2,8 +2,10 @@ PImage startscreen;
 PImage S;
 PFont title;
 
-Maan[] m = new Maan[5];
-Ster[] s = new Ster[5];
+Maan[] m = new Maan[1];
+Ster[] s = new Ster[1];
+Raket r = new Raket();
+Basis b = new Basis();
 int screen;
 
 void setup()
@@ -17,6 +19,8 @@ void setup()
   image(startscreen, 0, 0, 1200, 900);
   
   title = createFont("font", 2000, true);
+  
+  
 }
 
 void draw()
@@ -24,29 +28,31 @@ void draw()
  if(screen == 1)
  {
    textAlign(CENTER);
-   textSize(24);
-   text("Press s to start the game.", 600, 750);
-   textSize(22);
-   text("Press i for instructions.", 600, 780);
+   textSize(35);
+   text("Press 's' to start the game.", 600, 750);
+   textSize(27);
+   text("Instructions:", 95, 75);
+   textSize(23);
+   text("* Press 'LEFT' click to draw a moon.", 200, 125);
+   text("* Press 'RIGHT' click to draw a star.", 200, 175);
+   text("* Press 't' to deploy.", 115, 225);
+    text("* Press 'c' to clear your space.", 170, 275);
+   text("(Hint: deploy when your space is finished!)", 250, 325);
+   
    
    if(key == 's' && keyPressed == true)
    {
      screen = 2;
      background(0,0,0);
    }
-   if(key == 'i' && keyPressed == true)
-   {
-     screen = 3;
-   }
    
  }
  
  if(screen == 2)
  {
+  
    
-   
-   
-   if(key == 'i' && keyPressed == true)
+   if(keyPressed == true && key == 'i')
    {
     screen = 3; 
    }
@@ -63,26 +69,16 @@ void draw()
      fill(232,221,25);
      s[0] = new Ster(mouseX, mouseY, 10);
    }
-     
-/* if(screen == 3);
- {
-   background(255, 255, 255);
    
-   textSize(28);
-   text("This are the instructions:", 600, 100);
-   textSize(25);
-   
-   S = loadImage("s.jpg");
-   image(S, 730, 800, 80, 80);
-   
-   fill(0,0,0);
-   text("Press", 700, 850);
-   text("to go back to the game", 950, 850);
-   
-    if(key == 's' && keyPressed == true)
+   if(keyPressed == true && key == 'c')
    {
-     screen = 2;
+     clear();
    }
- }*/
+   
+     r.Teken();
+   
+     b.tekenBasis();
+   
+
 }
 }
